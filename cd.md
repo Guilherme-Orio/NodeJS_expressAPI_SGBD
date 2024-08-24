@@ -1,1 +1,1 @@
-"meu objetivo" 
+"meu objetivo é ser o mago"

@@ -3,28 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Tela de login com integração ao banco de dados</title>
 </head>
 <body>
     <header>
+        <h1>Formulário de login</h1>
         <nav>
             <ul>
-                <li></li>
-                <li></li>
-                <li></li>
+                <li>Home</li>
+                <li>Login</li>
+                <li>Cadastrar</li>
             </ul>
         </nav>
     </header>
     <main>
+        <h2>Cadastro</h2>
         <article>
-
+            <div class="container-name">
+                <label for="name">Nome:</label>
+                <input type="text" class="name" name="name" required>
+            </div>
+            <div class ="container-sobrenome">
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" class ="sobrenome" name="sobrenome" required>
+            </div>
+            <div class = "container-email">
+                <label for="email">E-mail:</label>
+                <input type="text" class = "email" name="email" required>
+            </div>
+            <div class = "container-dt-nascimento">
+                <label for="dt-nascimento">Data de nascimento:</label>
+                <input type="date" class="dt-nascimento" name="dt-nascimento" required>
+            </div>
+            <div class = "container-cpf">
+                <label for="cpf">CPF:</label>
+                <input type="text" class="cpf" name="cpf" >
+            </div>
+            <div class = "conteiner-senha">
+                <label for="senha">Senha:</label>
+                <input type="text" class = "senha" name = "senha" required>
+            </div>
         </article>
-        <aside>
-            
-        </aside>
-        <section>
-
-        </section>
     </main>
     <footer>
 
