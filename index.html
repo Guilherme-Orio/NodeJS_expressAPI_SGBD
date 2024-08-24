@@ -11,26 +11,53 @@
         <h1>Formulário de login</h1>
         <nav>
             <ul>
-                <li>Home</li>
-                <li>Login</li>
-                <li>Cadastrar</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Cadastrar</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <h2>Cadastro</h2>
-        <article>
+        <article class ="container-img">
+            <div class="img">
+                <img src="assets/img/OIG2.jpeg" alt="imagem de um robo com uma xícara de café">
+            </div>
+        </article>
+        <article class="container-cadastro">
+            <h2>Cadastre-se</h2>
             <div class="container-name">
                 <label for="name">Nome:</label>
-                <input type="text" class="name" name="name" required>
+                <input type="text" class="name" name="name" placeholder="Digite Seu Primeiro Nome"required>
             </div>
             <div class ="container-sobrenome">
                 <label for="sobrenome">Sobrenome:</label>
-                <input type="text" class ="sobrenome" name="sobrenome" required>
+                <input type="text" class ="sobrenome" name="sobrenome" placeholder="Digite Seu Sobrenome">
             </div>
             <div class = "container-email">
                 <label for="email">E-mail:</label>
-                <input type="text" class = "email" name="email" required>
+                <input type="text" class = "email" name="email" placeholder="Digite Seu E-mail">
+            </div>
+            <div class="numero">
+                <label for="numero">Número</label>
+                <input type="text" class="numero" name="numero" placeholder="(xx)xxxxxxxxx">
+            </div>
+            <div class="container-genero" aria-required="true">
+                <div class="genero">
+                    <input type="radio" class="masculino" name="masculino">
+                    <label for="masculino">Masculino</label>
+                </div>
+                <div class="genero">
+                    <input type="radio" class="feminino" name="feminino">
+                    <label for="masculino">Feminino</label>
+                </div>
+                <div class="genero">
+                    <input type="radio" class="outros" name="outros">
+                    <label for="masculino">Outros</label>
+                </div>
+                <div class="genero">
+                    <input type="radio" class="prefiro-nao-dizer" name="prefiro-nao-dizer">
+                    <label for="masculino">Prefiro não dizer</label>
+                </div>
             </div>
             <div class = "container-dt-nascimento">
                 <label for="dt-nascimento">Data de nascimento:</label>
@@ -38,16 +65,17 @@
             </div>
             <div class = "container-cpf">
                 <label for="cpf">CPF:</label>
-                <input type="text" class="cpf" name="cpf" >
+                <input type="text" class="cpf" name="cpf" placeholder="Digite Seu CPF" required >
             </div>
             <div class = "conteiner-senha">
                 <label for="senha">Senha:</label>
-                <input type="text" class = "senha" name = "senha" required>
+                <input type="text" class = "senha" name = "senha" placeholder="Digie Sua Senha" required>
+            </div>
+            <div class = "conteiner-confirmar-senha">
+                <label for="confirmar-senha">Confirmar Sua Senha:</label>
+                <input type="text" class = "confirmar-senha" name = "confirmar-senha" placeholder="Confirme Sua Senha" required>
             </div>
         </article>
     </main>
-    <footer>
-
-    </footer>
 </body>
 </html>
