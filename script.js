@@ -1,25 +1,25 @@
-document.getElementById("name").addEventListener("input", function(){
+document.getElementById("name").addEventListener("input", function() {
     let nome = this.value;
     this.value = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
 });
-document.getElementById("sobrenome").addEventListener("input", function(){
-    let nome = nome.charAt(0).toUpperCase() + nome.slice(1);
+document.getElementById("sobrenome").addEventListener("input", function() {
+    let sobrenome = this.value;
+    this.value = sobrenome.charAt(0).toUpperCase() + sobrenome.slice(1).toLowerCase();
 });
-document.getElementById("email").addEventListener("input", function(){
+document.getElementById("email").addEventListener("input", function() {
     const email = this.value;
-    const emailValidate =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailValidate = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const errorMensage = document.getElementById("email-error");
 
     if (!emailValidate.test(email)) {
-    errorMensage.textContent = "E-mail inválido. Por favor, insira um e-mail válido";
-    errorMensage.style.display = "block"
-    }
-    else {
-    errorMensage.textContent = "";
-    errorMensage.style.display = "none";
+        errorMensage.textContent = "E-mail inválido. Por favor, insira um e-mail válido";
+        errorMensage.style.display = "block";
+    } else {
+        errorMensage.textContent = "";
+        errorMensage.style.display = "none";
     }
 });
-document.getElementById("numero").addEventListener("input", function() {
+document.getElementById("numero").addEventListener("input", function(event) {
     let input = event.target;
     let inputValue = input.value.replace(/\D/g, '');
 
@@ -29,27 +29,25 @@ document.getElementById("numero").addEventListener("input", function() {
     let formattedInput = inputValue.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
     input.value = formattedInput;
 });
-document.getElementById("dt-nascimento").addEventListener("input", function(){
+document.getElementById("dt-nascimento").addEventListener("input", function(event) {
     const dtNascimento = this.value;
     const hoje = new Date();
     const dataNascimento = new Date(dtNascimento);
-    const idade = hoje.getFullYear() - dataNascimento.getFullYear();
+    let idade = hoje.getFullYear() - dataNascimento.getFullYear();
     const mes = hoje.getMonth() - dataNascimento.getMonth();
-    if(mes < 0 || (mes === 0 && hoje.getDate()< dataNascimento.getDate())){
+    if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
         idade -= 1;
     }
-    ErrorData = document.getElementById("error-dt-nascimento")
-    if(idade < 10){
-    ErrorData.textContent = "Você deve ter pelo menos 10 anos."
-    ErrorData.style.display = "block";
-    event.preventDefault();
-    }
-    else{
-    dataError.textContent = "";
-    dataError.style.display = "none";
+    const ErrorData = document.getElementById("error-dt-nascimento");
+    if (idade < 10) {
+        ErrorData.textContent = "Você deve ter pelo menos 10 anos.";
+        ErrorData.style.display = "block";
+        event.preventDefault();
+    } else {
+        ErrorData.textContent = "";
+        ErrorData.style.display = "none";
     }
 });
-
 function validarCPF(cpf1) {
     cpf1 = cpf1.replace(/\D/g, '');
 
@@ -72,45 +70,69 @@ function validarCPF(cpf1) {
     if (resto !== parseInt(cpf1.charAt(10))) return false;
 
     return true;
-};
-document.getElementById("cpf").addEventListener("input", function(){
+}
+document.getElementById("cpf").addEventListener("input", function() {
     const CPF = this.value;
     const errorCpf = document.getElementById("error-cpf");
-    if(!validarCPF(CPF)){
+    if (!validarCPF(CPF)) {
         errorCpf.textContent = "Por favor insira um CPF válido";
         errorCpf.style.display = "block";
-    }
-    else{
+    } else {
         errorCpf.textContent = "";
         errorCpf.style.display = "none";
     }
 });
-document.getElementById("senha").addEventListener("input", function(){
+document.getElementById("senha").addEventListener("input", function() {
     const senha1 = this.value;
     const errorSenha = document.getElementById("error-senha");
-    if (senha1.length < 6 || !/[A-Z]/.test(senha1) || !/[!@#$%^&*(),.?":{}|<>]/.test(senha1)) {
-        errorSenha.textContent = "A senha deve ter pelo menos 6 caracteres, conter pelo menos uma letra maiúscula e um caractere especial.";
+    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[0-9a-zA-Z$*&@#]{8,}$/.test(senha1)) {
+        errorSenha.textContent = "A senha deve ter pelo menos 6 caracteres, conter pelo menos uma letra maiúscula, e um caractere especial.";
         errorSenha.style.display = "block";
     } else {
         errorSenha.textContent = "";
         errorSenha.style.display = "none";
     }
 });
-document.getElementById("confirmar-senha").addEventListener("input", function(){
+document.getElementById("verSenha").addEventListener("click", function(){
+    const senha1 = document.getElementById("senha");
+    const icon = this;
+    if(senha1.type === "password"){
+        senha1.type = "text";
+        icon.textContent = "👁️";
+    }else{
+        senha1.type = "password"
+        icon.textContent = "👁️";
+    }
+})
+document.getElementById("confirmar-senha").addEventListener("input", function() {
     const confirmarSenha = this.value;
     const senha1 = document.getElementById("senha").value;
-    const errorConfirmarSenha = document.getElementById("error-confirmar-senha")
-    if(senha1 !== confirmarSenha){
-        errorConfirmarSenha.textContent = "As senha devem coincidir";
+    const errorConfirmarSenha = document.getElementById("error-confirmar-senha");
+    if (senha1 !== confirmarSenha) {
+        errorConfirmarSenha.textContent = "As senhas devem coincidir";
         errorConfirmarSenha.style.display = "block";
-    }else{
+    } else {
         errorConfirmarSenha.textContent = "";
         errorConfirmarSenha.style.display = "none";
     }
 });
-document.getElementById("btn-cadastrar").addEventListener("click", function(){
-    document.getElementById("cadastroForm").submit();
+document.getElementById("ver-confirmarsenha").addEventListener("click", function(){
+    const verconfirmarSenha = document.getElementById("confirmar-senha");
+    const icon1 = this;
+    if(verconfirmarSenha.type === "password"){
+        verconfirmarSenha.type = "text";
+        icon1.textContent = "👁️";
+    }else{
+        verconfirmarSenha.type = "password"
+        icon1.textContent = "👁️";
+    }
+})
+document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+    let formIsValid = true;
+    if (!formIsValid) {
+        event.preventDefault(); 
+    }
 });
-document.getElementById("cadastroForm").addEventListener("submit", function(event){
-    
+document.getElementById("btn-cadastrar").addEventListener("click", function() {
+    document.getElementById("cadastroForm").submit();
 });

@@ -1,20 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-*{
-    margin: 0px;
-    padding: 0px;
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
-body{
+
+body {
     font-family: 'Roboto Condensed', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    box-sizing: border-box;
     background-color: #68acbc;
     font-size: 15px;
 }
-header{
+
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -23,84 +25,95 @@ header{
     background-color: black;
     margin-bottom: 40px;
 }
-header h1{
+
+header h1 {
     font-size: 30px;
     color: white;
 }
-body h2{
+
+body h2 {
     margin-bottom: 5px;
     font-size: 30px;
 }
-nav ul{
+
+nav ul {
     display: flex;
     list-style: none;
 }
-nav ul li{
+
+nav ul li {
     margin: 20px;
     font-size: 20px;
 }
-a{
+
+a {
     text-decoration: none;
-    list-style: none;
     color: white;
 }
-a:hover{
+
+a:hover {
     color: #152044;
 }
-main{
+
+main {
     display: grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
     max-width: 1200px;
 }
-#container-img img{
+
+#container-img img {
     width: 100%;
     height: 100%;
     border-radius: 10px;
     object-fit: cover;
     object-position: center;
 }
-.container-genero{
+
+.container-genero {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-#container-cadastro{
+
+#container-cadastro {
     background-color: #fff;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 100%;
+    margin-bottom: 5px;
+    color: #333;
 }
-#container-cadastro{
-    margin-bottom:5px;
-    color:#333;
-}
-#container-cadastro div{
+
+#container-cadastro div {
     margin-bottom: 5px;
 }
-#container-cadastro label{
+
+#container-cadastro label {
     display: block;
     margin-bottom: 5px;
     font-size: 20px;
     color: #555;
 }
+
 #container-cadastro input[type="text"],
 #container-cadastro input[type="email"],
 #container-cadastro input[type="tel"],
 #container-cadastro input[type="date"],
-#container-cadastro input[type="password"]{
+#container-cadastro input[type="password"] {
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 20px;
 }
-#container-cadastro .genero{
+
+#container-cadastro .genero {
     display: flex;
 }
 
-#container-cadastro #btn-cadastrar{
+#container-cadastro #btn-cadastrar {
     display: block;
     width: 100%;
     background-color: #68acbc;
@@ -109,29 +122,58 @@ main{
     border-radius: 5px;
     font-size: 20px;
     cursor: pointer;
+    margin-top: 20px;
 }
-#container-cadastro #btn-cadastrar:hover{
+
+#container-cadastro #btn-cadastrar:hover {
     background-color: #152044;
 }
-@media(max-width: 768px){
-    main{
+
+@media (max-width: 768px) {
+    main {
         grid-template-columns: 1fr;
     }
-    #container-img img{
+    
+    #container-img img {
         display: none;
     }
-    header{
+    
+    header {
         justify-content: space-between;
     }
-    nav ul{
+    
+    nav ul {
         width: 100%;
     }
-    nav ul li{
+    
+    nav ul li {
         margin: 10px 10px;
     }
 }
 
+#container-verSenha {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
 
+.input-container {
+    display: flex;
+    align-items: center;
+}
 
+.ver-senha {
+    cursor: pointer;
+    margin-left: 10px;
+}
 
-
+.error-mensage {
+    color: red;
+    display: none;
+    margin-top: 5px;
+}
+#container-verConfirmarSenha {
+    display: flex;
+    position: relative;
+    width: 100%;
+}

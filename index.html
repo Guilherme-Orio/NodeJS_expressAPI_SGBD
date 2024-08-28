@@ -40,7 +40,7 @@
                     <span id = "email-error" class="error-mensage"></span>
                 </div>
                 <div id="numero">
-                    <label for="numero">Número</label>
+                    <label for="numero">Número:</label>
                     <input type="text" id="numero" name="numero" placeholder="(xx) xxxxx-xxxx" required>
                 </div>
                 <div class="container-genero" aria-required="true">
@@ -71,16 +71,22 @@
                     <input type="text" id="cpf" name="cpf" placeholder="Digite Seu CPF" required >
                     <span id ="error-cpf" class = "error-mensage"></span>
                 </div>
-                <div id = "conteiner-senha">
+                <div id = "container-senha">
                     <label for="senha">Senha:</label>
-                    <input type="password" id = "senha" name = "senha" placeholder="Digite Sua Senha" required>
+                    <div id="container-verSenha">
+                        <input type="password" id = "senha" name = "senha" placeholder="Digite Sua Senha" required>
+                    <span id ="verSenha" class="ver-senha">👁️</span>
+                    </div>
                     <span id ="error-senha" class="error-mensage"></span>
                 </div>
                 <div id = "container-confirmar-senha">
                     <label for="confirmar-senha">Confirmar Senha:</label>
-                    <input type="password" id = "confirmar-senha" name = "confirmar-senha" placeholder="Confirme Sua Senha" required>
-                    <span id="error-confirmar-senha" class = "error-mensage"></span>
+                    <div id="container-verConfirmarSenha">
+                        <input type="password" id = "confirmar-senha" name = "confirmar-senha" placeholder="Confirme Sua Senha" required>
+                    <span id="ver-confirmarsenha" class ="ver-senha">👁️</span>
+                    </div>
                 </div>
+                <span id="error-confirmar-senha" class = "error-mensage"></span>
                 <div id ="container-btn-cadastrar">
                     <button type="submit" id="btn-cadastrar">Cadastrar</button>
                 </div> 
