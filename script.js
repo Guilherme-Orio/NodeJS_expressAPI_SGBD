@@ -1,3 +1,4 @@
+//Validação e tratamento dos dados do Cadastro 
 document.getElementById("name").addEventListener("input", function() {
     let nome = this.value;
     this.value = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
@@ -82,17 +83,19 @@ document.getElementById("cpf").addEventListener("input", function() {
         errorCpf.style.display = "none";
     }
 });
-document.getElementById("senha").addEventListener("input", function() {
+document.getElementById("senha").addEventListener("input", function(){
     const senha1 = this.value;
     const errorSenha = document.getElementById("error-senha");
-    if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])[0-9a-zA-Z$*&@#]{8,}$/.test(senha1)) {
-        errorSenha.textContent = "A senha deve ter pelo menos 6 caracteres, conter pelo menos uma letra maiúscula, e um caractere especial.";
+    const regexValidacaoSenha = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()\-_=+\[\]{};:'"\\|,.<>/?`~])[A-Za-z0-9!@#$%^&*()\-_=+\[\]{};:'"\\|,.<>/?`~]{8,}$/;
+    if (!regexValidacaoSenha.test(senha1)) {
+        errorSenha.textContent = "A senha deve ter pelo menos 8 caracteres, conter pelo menos uma letra maiúscula, um número e um caractere especial.";
         errorSenha.style.display = "block";
     } else {
         errorSenha.textContent = "";
         errorSenha.style.display = "none";
     }
 });
+
 document.getElementById("verSenha").addEventListener("click", function(){
     const senha1 = document.getElementById("senha");
     const icon = this;
@@ -100,10 +103,10 @@ document.getElementById("verSenha").addEventListener("click", function(){
         senha1.type = "text";
         icon.textContent = "👁️";
     }else{
-        senha1.type = "password"
+        senha1.type = "password";
         icon.textContent = "👁️";
     }
-})
+});
 document.getElementById("confirmar-senha").addEventListener("input", function() {
     const confirmarSenha = this.value;
     const senha1 = document.getElementById("senha").value;
@@ -126,7 +129,7 @@ document.getElementById("ver-confirmarsenha").addEventListener("click", function
         verconfirmarSenha.type = "password"
         icon1.textContent = "👁️";
     }
-})
+});
 document.getElementById("cadastroForm").addEventListener("submit", function(event) {
     let formIsValid = true;
     if (!formIsValid) {
@@ -135,4 +138,14 @@ document.getElementById("cadastroForm").addEventListener("submit", function(even
 });
 document.getElementById("btn-cadastrar").addEventListener("click", function() {
     document.getElementById("cadastroForm").submit();
+});
+
+let nomecompleto = nome +" "+ sobrenome;
+
+
+// Integração com a API utilizando AJAX
+
+document.getElementById("formCadastro").addEventListener("submit", function(event){
+    event.preventDefault();
+    
 });
