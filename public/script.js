@@ -1,12 +1,17 @@
 //Validação e tratamento dos dados do Cadastro 
-document.getElementById("name").addEventListener("input", function() {
+document.getElementById("name").addEventListener("input", function(event) {
     let nome = this.value;
-    this.value = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase();
+    let nomeSemEspacos = this.replace(/^\s+|\s+$/g, '');
+    this.value = nome.charAt(0).toUpperCase() + nome.slice(1).toLowerCase(); 
 });
 document.getElementById("sobrenome").addEventListener("input", function() {
     let sobrenome = this.value;
     this.value = sobrenome.charAt(0).toUpperCase() + sobrenome.slice(1).toLowerCase();
+    let nomeSemEspacos = this.replace(/^\s+|\s+$/g, '');
 });
+
+let nomecompleto = nome +" "+ sobrenome;
+
 document.getElementById("email").addEventListener("input", function() {
     const email = this.value;
     const emailValidate = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -140,12 +145,8 @@ document.getElementById("btn-cadastrar").addEventListener("click", function() {
     document.getElementById("cadastroForm").submit();
 });
 
-let nomecompleto = nome +" "+ sobrenome;
-
-
 // Integração com a API utilizando AJAX
 
 document.getElementById("formCadastro").addEventListener("submit", function(event){
     event.preventDefault();
-    
 });
