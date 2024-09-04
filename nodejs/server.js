@@ -1,18 +1,49 @@
-const express = require("express");
+const express = require('express');
 const server = express();
-const sql = require("mssql");
+const mysql = require("mysql2");
 const porta = 3000;
+
 server.listen(porta, () => {
-    console.log("servidor na porta http://localhost:3000");
+    console.log("Servidor na porta http://localhost:3000");
     console.log("Para desligar: ctrl + c");
 });
 
-server.use(express.urlencoded({extended:true}));
+server.use(express.urlencoded({ extended: true }));
 server.use(express.static("public"));
-server.post("/cadastro", (req, res) => {
-    const {nome}
+server.use(express.json());
+
+// Conexão com o SGBD
+var connection = mysql.createConnection({
+    host: "localhost",
+    user: "usuario_node",
+    password: "951413",
+    database: "bd_cadastro"
 });
 
-server.get('/', (req, res) =>{
-    res.send('hello, world');
+connection.connect((err) => {
+    if (err) {
+        console.error("Erro ao conectar o banco de dados:", err);
+        return;
+    }
+    console.log("Conectado ao banco de dados");
+});
+
+server.get("/cadastro", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+});
+
+server.post("/cadastro", (req, res) => {
+    const { nomecompleto, email, numero, dtNascimento, cpf, senha } = req.body;
+
+    const query = 'INSERT INTO tb_cadastro (cpf, nome, email, numero, dt_nascimento, senha) VALUES(?,?,?,?,?,?)';
+    const values = [cpf, nomecompleto, email, numero, dtNascimento, senha];
+
+    connection.query(query, values, (err, results) => {
+        if (err) {
+            console.error("Erro ao inserir os dados:", err);
+            res.status(500).json({ message: "Erro ao inserir dados" });
+            return;
+        }
+        res.status(200).json({ message: "Cadastro realizado com sucesso" });
+    });
 });
