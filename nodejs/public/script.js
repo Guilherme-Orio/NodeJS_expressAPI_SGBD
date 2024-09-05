@@ -142,6 +142,8 @@ document.getElementById("cadastroForm").addEventListener("submit", function (eve
 
 document.getElementById("btn-cadastrar").addEventListener("click", function (event) {
     event.preventDefault();
+
+    const genero = document.querySelector('input[name="genero"]:checked').value;
     nome1 = document.getElementById("name").value;
     sobrenome1 = document.getElementById("sobrenome").value;
     nomecompleto = nome1 + " " + sobrenome1;
@@ -152,7 +154,8 @@ document.getElementById("btn-cadastrar").addEventListener("click", function (eve
         numero: document.getElementById("numero").value,
         dtNascimento: document.getElementById("dt-nascimento").value,
         cpf: document.getElementById("cpf").value,
-        senha: document.getElementById("senha").value
+        senha: document.getElementById("senha").value,
+        genero: genero
     };
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "/cadastro", true);
