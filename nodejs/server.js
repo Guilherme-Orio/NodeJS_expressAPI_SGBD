@@ -33,10 +33,10 @@ server.get("/cadastro", (req, res) => {
 });
 
 server.post("/cadastro", (req, res) => {
-    const { nomecompleto, email, numero, dtNascimento, cpf, senha } = req.body;
+    const { nomecompleto, email, numero, dtNascimento, cpf, senha, genero } = req.body;
 
-    const query = 'INSERT INTO tb_cadastro (cpf, nome, email, numero, dt_nascimento, senha) VALUES(?,?,?,?,?,?)';
-    const values = [cpf, nomecompleto, email, numero, dtNascimento, senha];
+    const query = 'INSERT INTO tb_cadastro (cpf, nome, email, numero, dt_nascimento, senha, genero) VALUES(?,?,?,?,?,?,?)';
+    const values = [cpf, nomecompleto, email, numero, dtNascimento, senha, genero];
 
     connection.query(query, values, (err, results) => {
         if (err) {
